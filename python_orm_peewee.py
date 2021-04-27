@@ -58,4 +58,18 @@ def read_data():
               student_read.classroom_id)
 
 
+# read_data()
+
+
+# change student's classroom
+student_change_classroom = Student().select().join(Classroom).where(Student.id == 2).get()
+student_change_classroom.classroom = Classroom.select().where(Classroom.name == '1B').get()
+student_change_classroom.save()
+
+
+# delete student
+Student.select().where(Student.id == 3).get().delete_instance()
+
 read_data()
+
+data.close()
